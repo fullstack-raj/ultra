@@ -17,6 +17,15 @@ services:
       ADMIN_JWT_SECRET: mJ5OtNqsY2Ws8/Y1qLq3BA==
       APP_KEYS: htLOJrtbPM48URnrFudNtw==,tVEUKMMtWy50hbruG6lSoQ==,hgNcel7/e/CAeYUwFRxnyA==,SfrWPrPaz/QR9VJbcb8lKw==
       NODE_ENV: production
+    deploy:
+      replicas: 2
+      #placement:
+       # max_replicas_per_node: 1
+      update_config:
+        parallelism: 
+        delay: 10s
+      restart_policy:
+        condition: on-failure
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
